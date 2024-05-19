@@ -1,12 +1,14 @@
 
 import './App.css';
-import ComponentImports  from './components/templating/ComponentImports';
+// import ComponentImports  from './components/templating/ComponentImports';
+import Counter  from './components/counter/Counter';
 
 
 function App() {
   return (
     <div className="App">
-      <ComponentImports />
+      {/* <ComponentImports /> */}
+      <Counter />
     </div>
   );
 }
