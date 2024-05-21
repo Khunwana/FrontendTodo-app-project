@@ -1,17 +1,28 @@
+import { useState } from 'react'
 import './Counter.css'
+import CounterButton from './CounterButton';
+
 export default function Counter()
 {
-    
-    function incrementCounterFunction()
+    const [count,setCount] = useState(0);
+
+    function incrementCounterParentFunction(properties1)
     {
-        console.log('increment clicked')
+        setCount(count+properties1)
+    }
+    function decrementCounterParentFunction(properties1)
+    {
+        setCount(count-properties1)        
     }
     return (
-        <div className="Counter">
-            <span className="count">0</span>
-            <div>
-            <button className="countButton" onClick={incrementCounterFunction}>+1</button>
-            </div>
-        </div>
+        <>
+        <CounterButton properties1 = {1}
+            incrementCounterParentFunction = {incrementCounterParentFunction} 
+            decrementCounterParentFunction={decrementCounterParentFunction}/>
+        <CounterButton properties1 = {2}
+            incrementCounterParentFunction = {incrementCounterParentFunction} 
+            decrementCounterParentFunction={decrementCounterParentFunction}/>
+        <span className="count">{count}</span>
+    </>
     )
 }
