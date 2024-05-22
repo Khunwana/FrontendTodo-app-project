@@ -14,6 +14,10 @@ export default function Counter()
     {
         setCount(count-properties1)        
     }
+    function resetCounter()
+    {
+        setCount(0)
+    }
     return (
         <>
         <CounterButton properties1 = {1}
@@ -23,6 +27,9 @@ export default function Counter()
             incrementCounterParentFunction = {incrementCounterParentFunction} 
             decrementCounterParentFunction={decrementCounterParentFunction}/>
         <span className="count">{count}</span>
+        <div>
+        <button className="resetButton" onClick={resetCounter}>Reset</button>
+        </div>
     </>
     )
 }
