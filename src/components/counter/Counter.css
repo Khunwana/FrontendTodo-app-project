@@ -9,6 +9,17 @@
     border-color: black;
     border-width: 5px;
 }
+.resetButton {
+    font-size:16px;
+    background-color:red;
+    width:20%;
+    margin: 10px;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    border-color: black;
+    border-width: 5px;
+}
 
 .count {
 font-size: 200px;
