@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter,Routes,Route,useNavigate, useParams } from 'react-router-dom'
+import { BrowserRouter,Routes,Route,useNavigate, useParams, Link } from 'react-router-dom'
 import './ToDoApp.css'
 export default function ToDoApp()
 {
@@ -7,10 +7,11 @@ export default function ToDoApp()
         <div className="ToDoApp">
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<LoginComponent />}></Route>
-                    <Route path='/login' element={<LoginComponent />}></Route>
-                    <Route path='/welcome/:username' element={<WelocomeComponent />}></Route>
-                    <Route path='*' element={<ErrorComponent />}></Route>
+                    <Route path='/' element={<LoginComponent />}/>
+                    <Route path='/login' element={<LoginComponent />}/>
+                    <Route path='/welcome/:username' element={<WelocomeComponent />}/>
+                    <Route path='/listToDo' element={<ListToDoComponent />}/>
+                    <Route path='*' element={<ErrorComponent />}/>
                 </Routes>
             </BrowserRouter>
             
@@ -87,8 +88,50 @@ function WelocomeComponent()
 
         <h1>Welcome {username}</h1>
         <div >
-            Welcome Component
+            Manage What To-Do - <Link to="/listToDo">Go here</Link>
         </div>
+        </div>
+    )
+}
+
+function ListToDoComponent()
+{
+    const today = new Date()
+    const targetDate = new Date(today.getFullYear(),today.getMonth(),today.getDay())
+
+    const toDo = [  {id:1,description:'Learn full-stack', done : false, targetDate :targetDate },
+                    {id:2,description:'Learn nodeJs', done : false, targetDate : targetDate},
+                    {id:3,description:'Learn flutter', done : false, targetDate :targetDate }]
+    return (
+        <div className="ListToDoComponent">
+            <h1>Things You Want To Do!</h1>
+            <div >
+            <table>
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>description</td>
+                        <td>done</td>
+                        <td>targetDate</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        toDo.map(
+                            todoList => (
+                                <tr key={todoList.id}>
+                                    <td>{todoList.id}</td>
+                                    <td>{todoList.description}</td>
+                                    <td>{todoList.done.toString()}</td>
+                                    <td>{todoList.targetDate.toDateString()}</td>
+                                </tr> 
+                            )
+                        )
+                    }
+                                   
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 }
