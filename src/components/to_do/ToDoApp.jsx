@@ -7,11 +7,13 @@ import ErrorComponent from '../to_do/ErrorComponent'
 import ListToDoComponent from '../to_do/ListToDoComponent'
 import WelocomeComponent from '../to_do/WelocomeComponent'
 import LoginComponent from '../to_do/LoginComponent'
+import AuthProvider from './security/AuthContext'
 
 export default function ToDoApp()
 {
     return(
         <div className="ToDoApp">
+            <AuthProvider>
                 <BrowserRouter>
                     <HeaderComponent />
                     <Routes>
@@ -24,6 +26,7 @@ export default function ToDoApp()
                     </Routes>
                     <FooterComponent />
                 </BrowserRouter>
+            </AuthProvider>
         </div>
     )
 }
