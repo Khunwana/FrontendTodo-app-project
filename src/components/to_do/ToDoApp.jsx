@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter,Routes,Route,useNavigate } from 'react-router-dom'
+import { BrowserRouter,Routes,Route,useNavigate, useParams } from 'react-router-dom'
 import './ToDoApp.css'
 export default function ToDoApp()
 {
@@ -9,7 +9,8 @@ export default function ToDoApp()
                 <Routes>
                     <Route path='/' element={<LoginComponent />}></Route>
                     <Route path='/login' element={<LoginComponent />}></Route>
-                    <Route path='/welcome' element={<WelocomeComponent />}></Route>
+                    <Route path='/welcome/:username' element={<WelocomeComponent />}></Route>
+                    <Route path='*' element={<ErrorComponent />}></Route>
                 </Routes>
             </BrowserRouter>
             
@@ -20,7 +21,7 @@ export default function ToDoApp()
 
 function LoginComponent()
 {
-    const [username,setUser]=useState('khunwana')
+    const [username,setUser]=useState('Khunwana')
     const [password,setPassword] = useState('')
     const [showSuccessMessage,setShowSuccessMessage] = useState(false)
     const [showErrorMessage,setShowErrorMessage] = useState(false)
@@ -35,7 +36,7 @@ function LoginComponent()
     {
         setPassword(event.target.value)
     }
-
+   
     function HandleSubmit()
     {
         if( username === 'Khunwana' && password === '1234')
@@ -43,7 +44,7 @@ function LoginComponent()
             console.log('Success')
             setShowSuccessMessage(true)
             setShowErrorMessage(false)
-            navigate('/welcome')
+            navigate(`/welcome/${username}`)
         }
         else
         {
@@ -56,6 +57,7 @@ function LoginComponent()
     
     return (
         <div className="Login">
+            <h1>Login Information</h1>
             {showSuccessMessage && <div className="successMessage">Authenticated Successfully</div>}
             {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials</div>}
 
@@ -78,18 +80,35 @@ function LoginComponent()
 
 function WelocomeComponent()
 {
+    const {username} = useParams()
+    console.log(username)
     return (
         <div className="Welcome">
+
+        <h1>Welcome {username}</h1>
+        <div >
             Welcome Component
+        </div>
         </div>
     )
 }
 
 function ErrorComponent()
 {
+    const navigate = useNavigate();
+    function GotoHome()
+    {
+        navigate('/welcome')
+    }
     return (
         <div className="ErrorComponent">
-            <H1></H1>
+            <h1>We are working very hard to resolve this!</h1>
+            <div>
+                Page not found. Please reach out to our team.
+            </div>
+            <div>
+            <button  type="button"  onClick={GotoHome} >Goto Home</button>
+            </div>
         </div>
     )
 }
