@@ -5,17 +5,18 @@ export default function ToDoApp()
 {
     return(
         <div className="ToDoApp">
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<LoginComponent />}/>
-                    <Route path='/login' element={<LoginComponent />}/>
-                    <Route path='/welcome/:username' element={<WelocomeComponent />}/>
-                    <Route path='/listToDo' element={<ListToDoComponent />}/>
-                    <Route path='*' element={<ErrorComponent />}/>
-                </Routes>
-            </BrowserRouter>
-            
-            
+            <HeaderComponent />
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<LoginComponent />}/>
+                        <Route path='/login' element={<LoginComponent />}/>
+                        <Route path='/welcome/:username' element={<WelocomeComponent />}/>
+                        <Route path='/listToDo' element={<ListToDoComponent />}/>
+                        <Route path='/logout' element={<LogoutComponent />}/>
+                        <Route path='*' element={<ErrorComponent />}/>
+                    </Routes>
+                </BrowserRouter>
+            <FooterComponent />
         </div>
     )
 }
@@ -151,6 +152,36 @@ function ErrorComponent()
             </div>
             <div>
             <button  type="button"  onClick={GotoHome} >Goto Home</button>
+            </div>
+        </div>
+    )
+}
+
+function HeaderComponent()
+{
+    return (
+        <div className="HeaderComponent">
+            Header <hr/>
+        </div>
+    )
+}
+
+function FooterComponent()
+{
+    return (
+        <div className="FooterComponent">
+            <hr/> Footer
+        </div>
+    )
+}
+
+function LogoutComponent()
+{
+    return (
+        <div className="LogoutComponent">
+            <h1>You are Logged out</h1>
+            <div>
+                Thank You For Using Our App
             </div>
         </div>
     )
