@@ -8,10 +8,19 @@ export default function WelocomeComponent()
     {
         console.log("callled")
         //axios
-        axios.get('http://localhost:8080/hello-world')
-            .then( (respone) => succesfulResponse(respone))
-            .catch((error) => errorResponse(error))
-            .finally(() => console.log("clean up"))
+         axios.get('http://localhost:8080/hello-world',{
+            auth:{
+                username: 'username',
+                password: 'password'
+            },
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+
+         })
+            .then( (response) => succesfulResponse(response) )
+            .catch ( (error) => errorResponse(error) )
+            .finally ( () => console.log('cleanup') )
     }
 
     function succesfulResponse(response)
