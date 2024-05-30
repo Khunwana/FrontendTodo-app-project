@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { retrieveAllToDoForusername,deleteTo_Do } from "./api/ListToDoApiService"
-import { useParams } from "react-router-dom"
+import { retrieveAllToDoForusername, deleteTo_DoApi } from "./api/ListToDoApiService"
+import { useNavigate, useParams } from "react-router-dom"
 import { useAuth } from "./security/AuthContext"
 
 
@@ -11,6 +11,7 @@ export default function ListToDoComponent()
     const refreshTime = 2000
     const authContext = useAuth()
     const username = authContext.username
+    const navigate = useNavigate()
    
     useEffect(
         () => resfreshTo_Do()
@@ -30,7 +31,7 @@ export default function ListToDoComponent()
     function deleteToDo(id)
     {
         console.log("deleted" + id)
-        deleteTo_Do(id,username)
+        deleteTo_DoApi(id,username)
             .then(
                 //Display message
                 setmessage(`Deleted To-Do ${id}`),
@@ -39,9 +40,10 @@ export default function ListToDoComponent()
             )
     }
 
-    function createToDo()
+    function updateToDo(id)
     {
         console.log("Create To-Do function")
+        navigate(`/listTodo/${id}`)
     }
 
     return (
@@ -68,7 +70,7 @@ export default function ListToDoComponent()
                                     <td>{todoList.done.toString()}</td>
                                     <td>{todoList.targetDate.toString()}</td>
                                     <td><button className="btn btn-warning" onClick={() => deleteToDo(todoList.id)}>Delete</button></td>
-                                    <td><button className="btn btn-success" onClick={() => createToDo(todoList.id)}>Create</button></td>
+                                    <td><button className="btn btn-success" onClick={() => updateToDo(todoList.id)}>Update</button></td>
                                 </tr> 
                             )
                         )

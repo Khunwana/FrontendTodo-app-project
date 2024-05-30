@@ -16,13 +16,23 @@ export  const retrieveAllToDoForusername
 
          })
 
-export const deleteTo_Do 
-    = (id,username) => apiClient.delete(`/users/${username}/todos/${id}`,{
-        auth:{
-            username: 'username',
-            password: 'password'
-        },
-        headers:{
-            'Content-Type' : 'application/json'
-        }
-})
+export const deleteTo_DoApi
+         = (id,username) => apiClient.delete(`/users/${username}/todos/${id}`,{
+             auth:{
+                 username: 'username',
+                 password: 'password'
+             },
+             headers:{
+                 'Content-Type' : 'application/json'
+             }
+     })
+export const retrieveTo_DoApi 
+         = (id,username) => apiClient.get(`/users/${username}/todos/${id}`,{
+             auth:{
+                 username: 'username',
+                 password: 'password'
+             },
+             headers:{
+                 'Content-Type' : 'application/json'
+             }
+     })
