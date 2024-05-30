@@ -1,23 +1,16 @@
 import { useParams, Link } from 'react-router-dom'
-import axios from 'axios'
+import { useState } from 'react'
+import GethelloworldBean from './api/HelloWorldApiService'
 export default function WelocomeComponent()
 {
     const {username} = useParams()
-    console.log(username)
+    const [data,setData] = useState(null)
+   
     function callhelloworldRestApi()
     {
         console.log("callled")
         //axios
-         axios.get('http://localhost:8080/hello-world',{
-            auth:{
-                username: 'username',
-                password: 'password'
-            },
-            headers:{
-                'Content-Type' : 'application/json'
-            }
-
-         })
+        GethelloworldBean()
             .then( (response) => succesfulResponse(response) )
             .catch ( (error) => errorResponse(error) )
             .finally ( () => console.log('cleanup') )
@@ -25,7 +18,7 @@ export default function WelocomeComponent()
 
     function succesfulResponse(response)
     {
-        console.log(response)
+        setData(response.data)
     }
 
     function errorResponse(error)
@@ -44,6 +37,7 @@ export default function WelocomeComponent()
             <button className="btn btn-success m-5" onClick={callhelloworldRestApi}>
                 hello world Rest API
                 </button>
+                <div className="text-info">{data}</div>
         </div>
         </div>
     )
