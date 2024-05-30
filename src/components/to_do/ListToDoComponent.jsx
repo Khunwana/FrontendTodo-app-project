@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { retrieveAllToDoForusername, deleteTo_DoApi } from "./api/ListToDoApiService"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useAuth } from "./security/AuthContext"
 
 
