@@ -46,3 +46,13 @@ export const updateTo_DoApi
                 'Content-Type' : 'application/json'
             }
 })
+export const createTo_DoApi 
+        = (username,toDo) => apiClient.post(`/users/${username}/todos`,toDo,{
+            auth:{
+                username: 'username',
+                password: 'password'
+            },
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+})
