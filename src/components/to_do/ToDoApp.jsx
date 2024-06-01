@@ -9,6 +9,8 @@ import WelocomeComponent from '../to_do/WelocomeComponent'
 import LoginComponent from '../to_do/LoginComponent'
 import AuthProvider, { useAuth } from './security/AuthContext'
 import ToDoComponent from './ToDoComponent'
+import AddNewComponent from './AddNewComponent'
+// import AddNewComponent from './AddNewComponent'
 
 function AuthenticatedRoute({children})
 {
@@ -46,6 +48,11 @@ export default function ToDoApp()
                         <Route path='/listToDo/:id' element={
                             <AuthenticatedRoute>
                                 <ToDoComponent />
+                            </AuthenticatedRoute>
+                        }/>
+                        <Route path='/addNew' element={
+                            <AuthenticatedRoute>
+                                <AddNewComponent />
                             </AuthenticatedRoute>
                         }/>
                         <Route path='/logout' element={
