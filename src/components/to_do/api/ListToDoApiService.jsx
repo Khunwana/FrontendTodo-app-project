@@ -25,14 +25,24 @@ export const deleteTo_DoApi
              headers:{
                  'Content-Type' : 'application/json'
              }
-     })
+})
 export const retrieveTo_DoApi 
-         = (id,username) => apiClient.get(`/users/${username}/todos/${id}`,{
-             auth:{
-                 username: 'username',
-                 password: 'password'
-             },
-             headers:{
-                 'Content-Type' : 'application/json'
-             }
-     })
+        = (id,username) => apiClient.get(`/users/${username}/todos/${id}`,{
+            auth:{
+                username: 'username',
+                password: 'password'
+            },
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+})
+export const updateTo_DoApi 
+        = (id,username,toDo) => apiClient.put(`/users/${username}/todos/${id}`,toDo,{
+            auth:{
+                username: 'username',
+                password: 'password'
+            },
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+})
