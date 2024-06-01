@@ -46,6 +46,11 @@ export default function ListToDoComponent()
         navigate(`/listTodo/${id}`)
     }
 
+    function addNew()
+    {
+        console.log("adding new Task")
+        navigate("/addNew")
+    }
     return (
         <div className="container">
             <h1>Things You Want To Do!</h1>
@@ -78,6 +83,7 @@ export default function ListToDoComponent()
                 </tbody>
             </table>
             </div>
+            <div className="btn btn-success" onClick={addNew}>Add New</div>
         </div>
     )
 }
