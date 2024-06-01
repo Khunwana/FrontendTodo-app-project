@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom"
-import { retrieveTo_DoApi } from "./api/ListToDoApiService"
+import { useNavigate, useParams } from "react-router-dom"
+import { retrieveTo_DoApi, updateTo_DoApi } from "./api/ListToDoApiService"
 import {  useAuth } from "./security/AuthContext"
 import { useEffect, useState } from "react"
 import { Formik,Form, Field, ErrorMessage } from "formik"
@@ -12,6 +12,7 @@ export default function ToDoComponent()
     const {id} = useParams()
     const authContext = useAuth()
     const username = authContext.username;
+    const navigate = useNavigate();
 
     useEffect(
         () => retrieveToDo(),[id]
@@ -29,7 +30,21 @@ export default function ToDoComponent()
     }
     function onSubmit(values)
     {
-        console.log(values)
+        // console.log(values)
+        const todo = {
+            id : id,
+            username : username,
+            description : values.description,
+            targetDate : values.targetDate,
+            done : false
+        }
+        // console.log(todo)
+        updateTo_DoApi(id,username,todo)
+        .then(response => {
+            console.log(response)
+            navigate("/listTodo")
+        })
+        .catch(error => console.log(error))
     }
     function validate(values)
     {
