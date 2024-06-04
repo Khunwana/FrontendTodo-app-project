@@ -1,17 +1,20 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GethelloworldBean } from './api/HelloWorldApiService'
+import { useAuth } from './security/AuthContext'
 // import GethelloworldBean from './api/HelloWorldApiService'
 export default function WelocomeComponent()
 {
     const {username} = useParams()
     const [data,setData] = useState(null)
+    const authContext = useAuth()
+    const tok = authContext.token
    
     function callhelloworldRestApi()
     {
         console.log("callled")
         //axios
-        GethelloworldBean()
+        GethelloworldBean(tok)
             .then( (response) => succesfulResponse(response) )
             .catch ( (error) => errorResponse(error) )
             .finally ( () => console.log('cleanup') )
