@@ -10,7 +10,6 @@ import LoginComponent from '../to_do/LoginComponent'
 import AuthProvider, { useAuth } from './security/AuthContext'
 import ToDoComponent from './ToDoComponent'
 import AddNewComponent from './AddNewComponent'
-// import AddNewComponent from './AddNewComponent'
 
 function AuthenticatedRoute({children})
 {

@@ -23,14 +23,12 @@ export default function ToDoComponent()
         retrieveTo_DoApi(id,username)
         .then(response => {
             setDescription(response.data.description)
-            setTargetDate(response.data.targetDate)
-            
+            setTargetDate(response.data.targetDate)            
         })
         .catch(error => console.log(error))
     }
     function onSubmit(values)
     {
-        // console.log(values)
         const todo = {
             id : id,
             username : username,
@@ -38,7 +36,7 @@ export default function ToDoComponent()
             targetDate : values.targetDate,
             done : false
         }
-        // console.log(todo)
+
         updateTo_DoApi(id,username,todo)
         .then(response => {
             console.log(response)
@@ -46,22 +44,15 @@ export default function ToDoComponent()
         })
         .catch(error => console.log(error))
     }
+
     function validate(values)
     {
-        let errors = {
-            // description : "There are errors in description",
-            // targetDate : "Target Date Invalid"
-        }
+        let errors = {}
 
         let str = values.targetDate;
         let result = str.split('-');
         let int_result = parseInt(result[0])
-        // console.log(int_result); 
-
-        // if(values.description.length < 5)
-        // {
-        //     errors.description = "Enter atleast 5 characters"   
-        // }
+     
         if(values.targetDate == null && int_result < 2024 )
         {
             errors.targetDate = "Enter a valid target date"   
@@ -71,8 +62,7 @@ export default function ToDoComponent()
     return (
         <div className="container">
             <h1>Enter To-Do Details</h1>
-            <div>
-                
+            <div>                
                <Formik initialValues={{description,targetDate}}
                 enableReinitialize={true}
                 onSubmit={onSubmit}
@@ -83,21 +73,22 @@ export default function ToDoComponent()
                 {
                     (props) => (
                         <Form>
-                        <ErrorMessage 
-                            name = "description"
-                            component="div"
-                            className="alert alert-warning"
-                        />
-                        <ErrorMessage 
-                            name = "targetDate"
-                            component="div"
-                            className="alert alert-warning"
-                        />
+                            <ErrorMessage 
+                                name = "description"
+                                component="div"
+                                className="alert alert-warning"
+                            />
+                            <ErrorMessage 
+                                name = "targetDate"
+                                component="div"
+                                className="alert alert-warning"
+                            />
 
                             <fieldset className="form-group">
                                 <label>Description</label>
                                 <Field type="text" className="form-control" name = "description"/>
                             </fieldset>
+                            
                             <fieldset className="form-group">
                                 <label>Target Date</label>
                                 <Field type="date" className="form-control"name="targetDate"/>

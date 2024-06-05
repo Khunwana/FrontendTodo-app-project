@@ -11,6 +11,7 @@ export default function ListToDoComponent()
     const refreshTime = 2000
     const authContext = useAuth()
     const username = authContext.username
+    const token = authContext.token
     const navigate = useNavigate()
    
     useEffect(
@@ -19,7 +20,7 @@ export default function ListToDoComponent()
 
     function resfreshTo_Do()
     {
-        retrieveAllToDoForusername(username)
+        retrieveAllToDoForusername(username,token)
             .then(response => setTo_Do(response.data,refreshTime),
             
             )
@@ -31,7 +32,7 @@ export default function ListToDoComponent()
     function deleteToDo(id)
     {
         console.log("deleted" + id)
-        deleteTo_DoApi(id,username)
+        deleteTo_DoApi(id,username,token)
             .then(
                 //Display message
                 setmessage(`Deleted To-Do ${id}`),

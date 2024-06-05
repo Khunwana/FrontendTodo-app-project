@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GethelloworldBean } from './api/HelloWorldApiService'
 import { useAuth } from './security/AuthContext'
-// import GethelloworldBean from './api/HelloWorldApiService'
+
 export default function WelocomeComponent()
 {
     const {username} = useParams()

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { executeBasicAuth } from "../api/HelloWorldApiService";
+import { apiClient } from "../api/ApiClient";
 
 export const AuthContext = createContext()
 
@@ -7,15 +8,10 @@ export const useAuth = () => useContext(AuthContext)
 
 export default function AuthProvider({children})
 {
-    //cheking if user is logged in
+    //checking if user is logged in
     const [isAuthenticated,setAuthenticated] = useState(false)
     const [username,setUsername] = useState("")
     const [token,setToken] = useState(null)
-
-    function testing(response)
-    {
-        console.log(response)
-    }
 
     async function login(username,password)
     {
@@ -29,6 +25,16 @@ export default function AuthProvider({children})
                     setAuthenticated(true)
                     setUsername(username)
                     setToken(basicAuthToken)
+
+                    apiClient.interceptors.request.use(
+                        (config) => {
+                            console.log('Intercepting and adding a token')
+                            config.headers.Authorization = basicAuthToken
+                            return config
+                        }
+                    );
+
+                 
                     return true
                 }
                 else
