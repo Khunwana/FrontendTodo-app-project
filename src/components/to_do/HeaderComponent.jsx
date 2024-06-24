@@ -11,7 +11,7 @@ export default function HeaderComponent()
         authContext.logout()
     }
     return (
-        <header className="border-bottom border-light border-5 mb-5 p-2">
+        <header className="border-bottom border-light border-5  p-2">
             <div className="container">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
@@ -21,6 +21,7 @@ export default function HeaderComponent()
                                 {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>}
                                 {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/welcome/:username">Welcome</Link></li>}
                                 {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/listTodo">To-Do</Link></li>}
+                                {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/home">home</Link></li>}
                             </ul>
                         </div>
                         <ul className="navbar-nav">
