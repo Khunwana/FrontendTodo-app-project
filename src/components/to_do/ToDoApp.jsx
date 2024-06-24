@@ -10,6 +10,7 @@ import LoginComponent from '../to_do/LoginComponent'
 import AuthProvider, { useAuth } from './security/AuthContext'
 import ToDoComponent from './ToDoComponent'
 import AddNewComponent from './AddNewComponent'
+import HomePage from '../profile/HomePage'
 
 function AuthenticatedRoute({children})
 {
@@ -41,6 +42,12 @@ export default function ToDoApp()
                         <Route path='/listToDo' element={
                             <AuthenticatedRoute>
                                 <ListToDoComponent />
+                            </AuthenticatedRoute>
+                        }/>
+
+                        <Route path='/home' element={
+                            <AuthenticatedRoute>
+                                <HomePage />
                             </AuthenticatedRoute>
                         }/>
 
