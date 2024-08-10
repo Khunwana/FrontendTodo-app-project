@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import {  useAuth } from './security/AuthContext'
-
+import './ToDoApp.css'
 export default function LoginComponent()
 {
     const [username,setUser]=useState('Khunwana')
@@ -24,7 +24,8 @@ export default function LoginComponent()
     {
         if(await authContext.login(username,password))
         {
-            navigate(`/welcome/${username}`)
+            // navigate(`/welcome/${username}`)
+            navigate('/')
         }
         else
         {
@@ -34,10 +35,10 @@ export default function LoginComponent()
 
     
     return (
-        <div className="Login">
+        <div className="p-5" style={{ paddingTop : '100px' }}>
             <h1>Login Information</h1>
             {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials</div>}
-            <div className="LoginForm">
+            <div className="p-5">
                 <div>
                     <label>User Name </label>
                     <input type="text" name="username"onChange={UserNameChange} value={username}/>
