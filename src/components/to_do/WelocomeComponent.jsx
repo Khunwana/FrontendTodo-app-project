@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GethelloworldBean } from './api/HelloWorldApiService'
 import { useAuth } from './security/AuthContext'
-
+import './ToDoApp.css'
 export default function WelocomeComponent()
 {
     const {username} = useParams()
@@ -31,14 +31,14 @@ export default function WelocomeComponent()
     }
 
     return (
-        <div className="Welcome">
+        <div className="welcome" style={{ paddingTop : '120px' }}>
 
         <h1>Welcome {username}</h1>
         <div >
             Manage What To-Do - <Link to="/listToDo">Go here</Link>
         </div>
-        <div>
-            <button className="btn btn-success m-5" onClick={callhelloworldRestApi}>
+        <div className='welcome'>
+            <button className="btn btn-success m-5 " onClick={callhelloworldRestApi}>
                 hello world Rest API
                 </button>
                 <div className="text-info">{data}</div>
