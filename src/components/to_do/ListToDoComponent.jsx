@@ -53,7 +53,7 @@ export default function ListToDoComponent()
         navigate("/addNew")
     }
     return (
-        <div className="container">
+        <div className="container" style={{ paddingTop : '125px' }}>
             <h1>Things You Want To Do!</h1>
             {message && <div className="alert alert-warning">{message}</div>}
             <div >
