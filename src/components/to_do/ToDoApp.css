@@ -8,3 +8,13 @@ footer {
     width: 90%;
     height: 40px ;
 }
+.login{
+    position: left;
+    top : 100px;
+    left : 1px;
+}
+.welcome{
+    /* align-content: center; */
+    top : 100px;
+    /* padding-top: '100px'; */
+}
