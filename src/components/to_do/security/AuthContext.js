@@ -28,7 +28,7 @@ export default function AuthProvider({children})
 
                     apiClient.interceptors.request.use(
                         (config) => {
-                            console.log('Intercepting and adding a token')
+                            // console.log('Intercepting and adding a token')
                             config.headers.Authorization = basicAuthToken
                             return config
                         }
