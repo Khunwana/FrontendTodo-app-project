@@ -30,7 +30,7 @@ export default function ToDoApp()
                 <BrowserRouter>
                     <HeaderComponent />
                     <Routes>
-                        <Route path='/' element={<LoginComponent />}/>
+                        <Route path='/home' element={<LoginComponent />}/>
                         <Route path='/login' element={<LoginComponent />}/>
                         <Route path='/welcome/:username' element={
                             <AuthenticatedRoute >
@@ -45,10 +45,10 @@ export default function ToDoApp()
                             </AuthenticatedRoute>
                         }/>
 
-                        <Route path='/home' element={
-                            <AuthenticatedRoute>
+                        <Route path='/' element={
+                            // <AuthenticatedRoute>
                                 <HomePage />
-                            </AuthenticatedRoute>
+                            // </AuthenticatedRoute>
                         }/>
 
                         <Route path='/listToDo/:id' element={
@@ -68,7 +68,7 @@ export default function ToDoApp()
                         }/>
                         <Route path='*' element={<ErrorComponent />}/>
                     </Routes>
-                    <FooterComponent />
+                    {/* <FooterComponent /> */}
                 </BrowserRouter>
             </AuthProvider>
         </div>
