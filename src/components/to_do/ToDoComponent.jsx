@@ -60,7 +60,7 @@ export default function ToDoComponent()
         return errors
     }
     return (
-        <div className="container">
+        <div className="container" style={{ paddingTop : '100px' }}>
             <h1>Enter To-Do Details</h1>
             <div>                
                <Formik initialValues={{description,targetDate}}
