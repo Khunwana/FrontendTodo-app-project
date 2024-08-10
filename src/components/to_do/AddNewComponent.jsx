@@ -31,7 +31,7 @@ export default function AddNewComponent()
         
     }
     return (
-        <div className="container">
+        <div className="container" style={{ paddingTop : '100px' }}>
             <h1>Create a new task</h1>
             <div>
                 <Formik initialValues={{description,targetDate}}
