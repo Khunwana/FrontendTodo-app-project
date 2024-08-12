@@ -527,11 +527,11 @@ export default function HomePage()
 										<div class="single-contact-add-info">
 										
 									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+										<li><a href="https://www.facebook.com/monias.khunwana/"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://github.com/Khunwana"><i class="fa fa-dribbble"></i></a></li>
 										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="https://www.linkedin.com/in/monias-khunwana-a253861b5/"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="https://www.instagram.com/_monias_k/"><i class="fa fa-instagram"></i></a></li>
 									</ul>
 								
 										</div>
