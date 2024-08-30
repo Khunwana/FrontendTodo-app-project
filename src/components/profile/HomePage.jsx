@@ -15,6 +15,7 @@ import imgPort from './assets/images/portfolio/p1.jpg'
 import imgPort1 from './assets/images/portfolio/p2.jpg'
 import imgPort3 from './assets/images/portfolio/p4.jpg'
 import $ from 'jquery'
+import './assets/css/style.css'
 
 
 export default function HomePage()
@@ -33,7 +34,7 @@ export default function HomePage()
 						<div class="col-md-12 text-center">
 							<div class="header-text">
 								<h2>hi <span>,</span> i am Monias Khunwana <span>.</span>   </h2>
-								<p>Full-stack web developer</p>
+								<p>Full-stack developer</p>
 								<a href={pdf1} download>download resume</a>
 							</div>
 						</div>
@@ -65,44 +66,46 @@ export default function HomePage()
 										exposure in areas such as electronics and the dynamic field of software
 										engineering.
 									</p>
-									<div class="row">
-										<div class="col-sm-4">
-											<div class="single-about-add-info">
-												<h3>phone</h3>
-												<p>(+27)81 765 0044</p>
+
+										<div class="row">
+											<div class="col-sm-4">
+												<div class="single-about-add-info">
+													<h3>phone</h3>
+													<p>(+27)81 765 0044</p>
+												</div>
 											</div>
-										</div>
-										<div class="col-sm-4">
-											<div class="single-about-add-info">
-												<h3>email</h3>
-												<p>khunwana.monias@gmail.com</p>
+											<div class="col-sm-4">
+												<div class="single-about-add-info">
+													<h3>email</h3>
+													<p>khunwana.monias@gmail.com</p>
+												</div>
 											</div>
+											{/* <div class="col-sm-4">
+												<div class="single-about-add-info">
+													<h3>website</h3>
+													<p>www.Khunwanaweb.com</p>
+												</div>
+											</div> */}
 										</div>
-										<div class="col-sm-4">
-											<div class="single-about-add-info">
-												<h3>website</h3>
-												<p>www.Khunwanaweb.com</p>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 							<div class="col-sm-offset-1 col-sm-5">
-								<div class="single-about-img">
-									
-									<img src={img1} className='img1' alt=""/>
+								<div class="single-about-img" >
+								
+								{/* <img src={img1} className='img1' alt="" style={{height:500, width:1000, paddingLeft:50}}/> */}
+								<img src={img1} class="img1" alt="" />
 									<div class="about-list-icon">
 										<ul>
 											<li>
-												<a href="#">
+												<a href="https://www.facebook.com/monias.khunwana/">
 													<i  class="fa fa-facebook" aria-hidden="true"></i>
 												</a>
 											</li>
 											<li>
-												<a href="#">
-													<i  class="fa fa-dribbble" aria-hidden="true"></i>
+												<a href="https://github.com/Khunwana">
+													<i  class="fa fa-github" aria-hidden="true"></i>
 												</a>
-												
+												{/* <FontAwesomeIcon icon="fa-brands fa-github" /> */}
 											</li>
 											<li>
 												<a href="#">
@@ -111,12 +114,12 @@ export default function HomePage()
 												
 											</li>
 											<li>
-												<a href="#">
+												<a href="https://www.linkedin.com/in/monias-khunwana-a253861b5/">
 													<i  class="fa fa-linkedin" aria-hidden="true"></i>
 												</a>
 											</li>
 											<li>
-												<a href="#">
+												<a href="https://www.instagram.com/_monias_k/">
 													<i  class="fa fa-instagram" aria-hidden="true"></i>
 												</a>
 											</li>
@@ -135,7 +138,7 @@ export default function HomePage()
 			
 			<section id="education" class="education">
 				<div class="section-heading text-center">
-					<h2>education & experience</h2>
+					<h2>education</h2>
 				</div>
 				<div class="container">
 					<div class="education-horizontal-timeline">
@@ -147,7 +150,7 @@ export default function HomePage()
 										<h3>Matric Certificate in Science </h3>
 									</div>
 									<div class="timeline-horizontal-border">
-										<i class="fa fa-circle" aria-hidden="true"></i>
+										{/* <i class="fa fa-circle" aria-hidden="true"></i> */}
 										<span class="single-timeline-horizontal"></span>
 									</div>
 									<div class="timeline">
@@ -170,7 +173,7 @@ export default function HomePage()
 										<h3>Computer System Engineering</h3>
 									</div>
 									<div class="timeline-horizontal-border">
-										<i class="fa fa-circle" aria-hidden="true"></i>
+										{/* <i class="fa fa-circle" aria-hidden="true"></i> */}
 										<span class="single-timeline-horizontal"></span>
 									</div>
 									<div class="timeline">
@@ -194,9 +197,8 @@ export default function HomePage()
 										<h3>NQF Level 5 : Software Development</h3>
 									</div>
 									<div class="timeline-horizontal-border">
-										<i class="fa fa-circle" aria-hidden="true"></i>
-										<span class="single-timeline-horizontal spacial-horizontal-line
-										"></span>
+										{/* <i class="fa fa-circle" aria-hidden="true"></i> */}
+										<span class="single-timeline-horizontal"></span>
 									</div>
 									<div class="timeline">
 										<div class="timeline-content">
@@ -318,6 +320,7 @@ export default function HomePage()
 									<div class="barWrapper">
 										<span class="progressText">Java</span>
 										<div class="single-progress-txt">
+											
 											<div class="progress ">
 												<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" >
 													  
@@ -500,7 +503,7 @@ export default function HomePage()
 										<div class="row">
 											<div class="col-sm-12">
 												<div class="single-contact-btn">
-													<a class="contact-btn" href="#" role="button">submit</a>
+													<a class="contact-btn"  role="button" disabled={true}>submit</a>
 												</div>
 											</div>
 										</div>
@@ -547,24 +550,11 @@ export default function HomePage()
 		</section>
 
 		<section>
-
-		<footer id="footer-copyright" class="footer-copyright">
-			<div class="container">
-				<div class="hm-footer-copyright text-center">
+			<div class="hm-footer-copyright text-center">
 					<p>
-						&copy; copyright yourname. design and developed by <a href="https://www.themesine.com/">themesine</a>
+						 developed and designed by Khunwana MN 
 					</p>
-				</div>
 			</div>
-
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" ></i>
-				</div>
-				
-			</div>
-			
-        </footer>
 		</section>
 
 			

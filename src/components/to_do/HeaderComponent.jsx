@@ -39,7 +39,7 @@ export default function HeaderComponent()
             <ul>
               <li>
                 {/* <NavLink to="/">Home</NavLink> */}
-                {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/home">Home</Link></li>}
+                {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>}
               </li>
               <li>
                 {/* <NavLink to="/blog">Blog</NavLink> */}
@@ -55,7 +55,7 @@ export default function HeaderComponent()
               </li>
               <li>
                 {/* <NavLink to="/contact">Contact</NavLink> */}
-                {!isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li> }   
+                {!isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/login">Admin</Link></li> }   
                  {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/logout" onClick={logout}>Logout</Link></li>}
               </li>
             </ul>
