@@ -1,67 +1,70 @@
-import { Link } from 'react-router-dom'
-import {  useAuth } from './security/AuthContext'
-import '../profile/assets/css/style.css'
-import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
-export default function HeaderComponent()
-{
-    const authContext = useAuth()
-    const isAuthenticated = authContext.isAuthenticated
+import { Link } from 'react-router-dom';
+import { useAuth } from './security/AuthContext';
+import '../profile/assets/css/style.css';
+import { useState } from 'react';
 
-    const [showNav, setShowNav] = useState(false)
+export default function HeaderComponent() {
+  const authContext = useAuth();
+  const isAuthenticated = authContext.isAuthenticated;
 
-    const toggleNavItems = () => {
-    setShowNav(!showNav)
-    }
+  const [showNav, setShowNav] = useState(false);
 
-    const [showNavbar, setShowNavbar] = useState(false)
+  const toggleNavItems = () => {
+    setShowNav(!showNav);
+  };
 
-    const handleShowNavbar = () => {
-        setShowNavbar(!showNavbar)
-    }
+  const [showNavbar, setShowNavbar] = useState(false);
 
-    function logout()
-    {
-        authContext.logout()
-    }
-    return (
-      
-        <nav className="navbar fixed-top border-bottom border-light border-5  p-2">
-        {/* <div className="container"> */}
-          <div className="logo">
-            <h1>Khunwana</h1>
-          </div>
-          <div className="menu-icon" onClick={handleShowNavbar}>
-          {/* <Hamburger /> */}
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  function logout() {
+    authContext.logout();
+  }
+
+  return (
+    <nav className="navbar fixed-top border-bottom border-light border-5 p-2">
+      <div className="navbar-container">
+        {/* Logo Section (Left side) */}
+        <div className="logo">
+          <h1>Khunwana</h1>
+        </div>
+
+        {/* Menu Icon */}
+        <div className="menu-icon" onClick={handleShowNavbar}>
           <h1>=</h1>
-          </div>
-          <div className={`nav-elements  ${showNavbar && 'active'}`}>
-            <ul>
-              <li>
-                {/* <NavLink to="/">Home</NavLink> */}
-                {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>}
-              </li>
-              <li>
-                {/* <NavLink to="/blog">Blog</NavLink> */}
-                {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/welcome/:username">Welcome</Link></li>}
-              </li>
-              <li>
-                {/* <NavLink to="/projects">Projects</NavLink> */}
-                {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/listTodo">To-Do</Link></li>}
-              </li>
-              <li>
-                {/* <NavLink to="/about">About</NavLink> */}
-                {/* {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/">home</Link></li>} */}
-              </li>
-              <li>
-                {/* <NavLink to="/contact">Contact</NavLink> */}
-                {!isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/login">Admin</Link></li> }   
-                 {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/logout" onClick={logout}>Logout</Link></li>}
-              </li>
-            </ul>
-          </div>
-        {/* </div> */}
-      </nav>
-       
-    )
+        </div>
+
+        {/* Navbar Items (Right side) */}
+        <div className={`nav-elements ${showNavbar && 'active'}`}>
+          <ul>
+            {/* Non-authenticated links */}
+            {!isAuthenticated && (
+              <>
+                <li className="nav-item"><Link className="nav-link" to="#about">About Me</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#education">Education</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#experience">Experience</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#skills">Skills</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#contact">Contact Me</Link></li>
+              </>
+            )}
+
+            {/* Authenticated links */}
+            {isAuthenticated && (
+              <>
+                <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/welcome/:username">Welcome</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="/listTodo">To-Do</Link></li>
+              </>
+            )}
+
+            {/* Admin / Logout links */}
+            {!isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/login">Admin</Link></li>}
+            {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/logout" onClick={logout}>Logout</Link></li>}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 }

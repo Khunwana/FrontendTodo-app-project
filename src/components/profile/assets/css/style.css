@@ -25,6 +25,10 @@ font-family: 'Poppins', sans-serif;
 /*-------------------------------------
 		1.General css (Reset code)
 --------------------------------------*/
+html {
+    scroll-behavior: smooth;
+  }
+  
 *{
     padding: 0;
     margin: 0;
@@ -127,139 +131,86 @@ html,body{
 
 
 
+/* For Navbar Container */
 .navbar {
-    height: 90px;
+    display: flex;
+    justify-content: space-between; /* Align logo to the left and links to the right */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f6f6;
+    position: fixed;
     width: 100%;
-    background-color: #fff;
-    position: relative;
-    /* margin: 1px; */
-    z-index: 1;
-    
+    height: 13%;
+    top: 0;
+    z-index: 1000;
   }
-
-  .logo {
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70%;
+    max-width: 1300px; /* Adjust this based on your design */
+    max-height : 750px; /* Adjust this based on your design */
+    margin: 0 auto;
+    align-items: center;
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 3rem;
   }
   
   .menu-icon {
-    display: none;
-  }
-  
-  .nav-elements {
-    z-index: 1;
+    display: none; /* If you want to add hamburger menu functionality, enable this */
   }
   
   .nav-elements ul {
-    display: flex;
-    justify-content: space-between;
     list-style-type: none;
+    display: flex;
+    gap: 50px;
+    margin: 0;
   }
   
-  .nav-elements ul li:not(:last-child) {
-    margin-right: 60px;
+  .nav-elements ul li {
+    display: inline-block;
   }
   
-  .nav-elements ul a {
-    font-size: 16px;
-    font-weight: 400;
-    color: #2f234f;
+  .nav-elements .nav-item {
+    display: flex;
+    justify-content: center;
+    font-size: 13.7px;
+  }
+  
+  .nav-elements .nav-link {
     text-decoration: none;
+    color: #000;
+    padding: 4px;
   }
   
-  .nav-elements ul a.active {
-    color: #574c4c;
-    font-weight: 500;
-    position: relative;
+  .nav-elements .nav-link:hover {
+    color: #007BFF;
   }
   
-  .nav-elements ul a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #574c4c;
-  }
-  
+  /* On mobile or smaller screens, we may want to adjust the menu */
   @media (max-width: 768px) {
-    .welcome-hero{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position:relative;
-        background:url(../images/about/full-stack-developer.jpg)no-repeat;
-        background-size:cover;
-        background-position: center;
-        height:500px;
-        z-index: 1;
+    .nav-elements ul {
+      flex-direction: column;
+      gap: 10px;
     }
-    .welcome-hero:before{
-        position:absolute;
-        content: " ";
-        top:0;
-        left:0;
-        background:rgba(31,44,108,.65);
-        width:100%;
-        height:100%;
-    }
-    
-    .nav-elements ul li:not(:last-child) {
-      margin-right: 30px;
-    }
-  }
   
-  @media (max-width: 600px) {
-    .welcome-hero{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position:relative;
-        background:url(../images/about/full-stack-developer.jpg)no-repeat;
-        background-size:cover;
-        background-position: center;
-        height:500px;
-        z-index: 1;
-    }
-    .welcome-hero:before{
-        position:absolute;
-        content: " ";
-        top:0;
-        left:0;
-        background:rgba(31,44,108,.65);
-        width:100%;
-        height:100%;
-    }
-    
     .menu-icon {
       display: block;
       cursor: pointer;
-    }
-  
-    .nav-elements {
-      position: absolute;
-      z-index: 2;
-      right: 0;
-      top: 60px;
-      background-color: transparent;
-      /* background-color: #fff; */
-      width: 0px;
-      height: calc(100vh - 60px);
-      transition: all 0.3s ease-in;
-      overflow: hidden;
+      font-size: 5rem;
     }
   
     .nav-elements.active {
-      width: 270px;
+      display: block; /* Show items when active */
     }
   
-    .nav-elements ul {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .nav-elements ul li {
-      margin-right: unset;
-      margin-top: 22px;
+    .nav-elements {
+      display: none;
     }
   }
   
