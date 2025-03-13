@@ -35,22 +35,25 @@ export default function LoginComponent()
 
     
     return (
-        <div className="p-5" style={{ paddingTop : '100px' }}>
-            <h1>Login Information</h1>
-            {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials</div>}
-            <div className="p-5">
-                <div>
-                    <label>User Name </label>
-                    <input type="text" name="username"onChange={UserNameChange} value={username}/>
-                </div>
-                <div>
-                    <label>Password  </label>
-                    <input type="password" name="password" onChange={ChangedPassword} value={password}/>
-                </div>
-                <div>
-                    <button  type="button" name="login" onClick={HandleSubmit} >login</button>
+        <div className="container">
+            <div className="form-container">
+                <h1>Login Information</h1>
+                {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials</div>}
+                <div className="form">
+                    <div>
+                        <label>User Name </label>
+                        <input type="text" name="username" onChange={UserNameChange} value={username} />
+                    </div>
+                    <div>
+                        <label>Password  </label>
+                        <input type="password" name="password" onChange={ChangedPassword} value={password} />
+                    </div>
+                    <div>
+                        <button type="button" name="login" onClick={HandleSubmit}>login</button>
+                    </div>
                 </div>
             </div>
         </div>
+
     )
 }
