@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from './security/AuthContext';
+import { Link as ScrollLink } from 'react-scroll';  // Import react-scroll's Link component
 import '../profile/assets/css/style.css';
 import { useState } from 'react';
 
@@ -42,26 +43,70 @@ export default function HeaderComponent() {
             {/* Non-authenticated links */}
             {!isAuthenticated && (
               <>
-                <li className="nav-item"><Link className="nav-link" to="#about">About Me</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="#education">Education</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="#experience">Experience</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="#skills">Skills</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="#contact">Contact Me</Link></li>
+                <li className="nav-item">
+                  <ScrollLink className="nav-link" to="about" smooth={true} duration={500}>
+                    About Me
+                  </ScrollLink>
+                </li>
+                <li className="nav-item">
+                  <ScrollLink className="nav-link" to="education" smooth={true} duration={500}>
+                    Education
+                  </ScrollLink>
+                </li>
+                <li className="nav-item">
+                  <ScrollLink className="nav-link" to="experience" smooth={true} duration={500}>
+                    Experience
+                  </ScrollLink>
+                </li>
+                <li className="nav-item">
+                  <ScrollLink className="nav-link" to="skills" smooth={true} duration={500}>
+                    Skills
+                  </ScrollLink>
+                </li>
+                <li className="nav-item">
+                  <ScrollLink className="nav-link" to="contact" smooth={true} duration={500}>
+                    Contact Me
+                  </ScrollLink>
+                </li>
               </>
             )}
 
             {/* Authenticated links */}
             {isAuthenticated && (
               <>
-                <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="/welcome/:username">Welcome</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="/listTodo">To-Do</Link></li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/welcome/:username">
+                    Welcome
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/listTodo">
+                    To-Do
+                  </Link>
+                </li>
               </>
             )}
 
             {/* Admin / Logout links */}
-            {!isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/login">Admin</Link></li>}
-            {isAuthenticated && <li className="nav-item"><Link className="nav-link" to="/logout" onClick={logout}>Logout</Link></li>}
+            {!isAuthenticated && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Admin
+                </Link>
+              </li>
+            )}
+            {isAuthenticated && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout" onClick={logout}>
+                  Logout
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
